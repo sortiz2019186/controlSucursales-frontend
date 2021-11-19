@@ -1,0 +1,27 @@
+<div class="mx-2 my-2">
+    <h1>Control de perfil/app</h1>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Username</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let empresas of empresasList">
+            <th scope="row">{{empresas._id}}</th>
+            <td>{{empresas.rol}}</td>
+            <td>{{empresas.username}}</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                    <button type="button" class="btn btn-outline-dark"><i class="bi bi-pencil-square"></i> Editar</button>
+                    <button type="button" class="btn btn-outline-dark"><i class="bi bi-trash-fill"></i> Eliminar</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

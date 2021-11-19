@@ -1,0 +1,24 @@
+<div class="container my-5">
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-4">
+            <h1>Inciar sesión</h1>
+            <form>
+                <!-- USERNAME -->
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Usuario</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" #username='ngModel' [(ngModel)]="empresaModel.username">
+                </div>
+                <!-- CONTRASEÑA -->
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" #password='ngModel' [(ngModel)]="empresaModel.password">
+                </div>
+                <div class="modal-footer">
+                </div>
+                <button type="button" class="btn btn-success" (click)="login()">Inicar Sesión</button>
+                <span class="mx-1"></span>
+                <button type="button" class="btn btn-danger" routerLink='/home'>Cancelar</button>
+            </form>
+        </div>
+    </div>
+</div>

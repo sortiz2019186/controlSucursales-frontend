@@ -3,16 +3,33 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './components/login/login.component';
+import { SucursalesComponent } from './components/sucursales/sucursales.component';
+import { HomeComponent } from './components/home/home.component';
+import { ProductosEmpresaComponent } from './components/productos-empresa/productos-empresa.component';
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service';
+import { EmpresasComponent } from './components/empresas/empresas.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    SucursalesComponent,
+    HomeComponent,
+    ProductosEmpresaComponent,
+    EmpresasComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
