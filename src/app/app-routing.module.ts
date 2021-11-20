@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ProductosEmpresaComponent } from './components/productos-empresa/productos-empresa.component';
 import { SucursalesComponent } from './components/sucursales/sucursales.component';
 import { EmpresasComponent } from './components/empresas/empresas.component';
+import { ProductosSucursalComponent } from './components/productos-sucursal/productos-sucursal.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'sucursales', component: SucursalesComponent },
   { path: 'empresas', component: EmpresasComponent },
   { path: 'productosEmpresa', component: ProductosEmpresaComponent },
+  { path: 'productosSucursal', component: ProductosSucursalComponent },
   { path: '**', component: HomeComponent }
 ];
 
