@@ -31,11 +31,51 @@
                 </div>
             </td>
             <td>
-                <button type="button" class="btn btn-outline-dark"><i class="bi bi-send-fill"></i></button>
+                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#agregarProducto"><i class="bi bi-send-fill"></i></button>
             </td>
         </tr>
     </tbody>
 </table>
+
+<!-- AGREGAR -->
+<div class="modal fade" id="agregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar producto a sucusal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <!-- NOMBRE PRODUCTO -->
+                    <div class="mb-3">
+                        <label for="inputNombree" class="form-label">Nombre del producto</label>
+                        <input type="text" class="form-control" id="inputNombree" name="nombreProducto" #nombreProducto='ngModel' [(ngModel)]="productoSucursalModel.nombreProducto">
+                    </div>
+                    <!-- STOCK EXISTENTE -->
+                    <div class="mb-3">
+                        <label for="inputExistente" class="form-label">Stock existente</label>
+                        <input type="text" class="form-control" id="inputExistente" name="stockExistente" #stockExistente='ngModel' [(ngModel)]="productoSucursalModel.stockExistente">
+                    </div>
+                    <!-- CANTIDAD VENDIDA -->
+                    <div class="mb-3">
+                        <label for="inputVendido" class="form-label">Cantidad vendida</label>
+                        <input type="number" class="form-control" id="inputVendido" name="cantidadVendida" #cantidadVendida='ngModel' [(ngModel)]="productoSucursalModel.cantidadVendida">
+                    </div>
+                    <!-- ID SUCURSAL -->
+                    <div class="mb-3">
+                        <label for="inputIdSucursal" class="form-label">ID de la sucursal</label>
+                        <input type="text" class="form-control" id="inputIdSucursal" name="idSucursal" #idSucursal='ngModel' [(ngModel)]="productoSucursalModel.idSucursal">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="crearProductoSucursal()">Guardar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- AGREGAR -->
 <div class="modal fade" id="agregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

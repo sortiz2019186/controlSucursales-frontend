@@ -3,6 +3,7 @@ export class ProductoSucursal {
     public _id: String,
     public nombreProducto: String,
     public stockExistente: Number,
-    public cantidadVendida: Number
+    public cantidadVendida: Number,
+    public idSucursal: String
   ) {}
 }

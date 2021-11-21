@@ -64,6 +64,18 @@ export class EmpresasComponent implements OnInit {
     );
   }
 
+  obtenerEmpresa() {
+    this.empresaService.obtenerEmpresa().subscribe(
+      response => {
+        console.log(response.empresaEncontrada);
+        this.empresaIDModel = response.empresaEncontrada;
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
+  }
+
   modificarEmpresa() {
     this.empresaService.modificarEmpresa(this.empresaIDModel).subscribe(
       response => {
@@ -93,8 +105,8 @@ export class EmpresasComponent implements OnInit {
     );
   }
 
-  eliminarEmpresa(id: any) {
-    this.empresaService.eliminarEmpresa(id).subscribe(
+  eliminarEmpresa() {
+    this.empresaService.eliminarEmpresa().subscribe(
       response => {
         console.log(response);
 

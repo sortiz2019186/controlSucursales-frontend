@@ -2,6 +2,11 @@
     <h1>Control de perfil/app</h1>
 </div>
 
+<div class="mx-2 my-2">
+    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#agregar"><i class="bi bi-plus-square-fill"></i> Agregar empresa</button>
+
+</div>
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -18,10 +23,133 @@
             <td>{{empresas.username}}</td>
             <td>
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                    <button type="button" class="btn btn-outline-dark"><i class="bi bi-pencil-square"></i> Editar</button>
-                    <button type="button" class="btn btn-outline-dark"><i class="bi bi-trash-fill"></i> Eliminar</button>
+                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editar" (click)="obtenerEmpresa()"><i class="bi bi-pencil-square"></i> Editar</button>
+                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#eliminar" (click)="obtenerEmpresa()"><i class="bi bi-trash-fill"></i> Eliminar</button>
                 </div>
             </td>
         </tr>
     </tbody>
 </table>
+
+<!-- AGREGAR -->
+<div class="modal fade" id="agregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar empresa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <!-- ROL -->
+                    <div class="mb-3">
+                        <label for="inputRol" class="form-label">Rol de la empresa</label>
+                        <input type="text" class="form-control" id="inputRol" name="rol" #rol='ngModel' [(ngModel)]="empresaModel.rol">
+                    </div>
+                    <!-- USERNAME -->
+                    <div class="mb-3">
+                        <label for="inputUsername" class="form-label">Username de la empresa</label>
+                        <input type="text" class="form-control" id="inputUsername" name="username" #username='ngModel' [(ngModel)]="empresaModel.username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputPassword" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="inputPassword" name="password" #password='ngModel' [(ngModel)]="empresaModel.password">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="crearEmpresa()">Guardar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- EDITAR -->
+<div class="modal fade" id="editar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar empresa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <!-- ID DE LA EMPRESA -->
+                    <div class="mb-3">
+                        <label for="inputId" class="form-label">ID de la empresa</label>
+                        <input type="text" class="form-control" id="inputId" name="_id" #_id='ngModel' [(ngModel)]="empresaIDModel._id" disabled>
+                    </div>
+                    <!-- ROL -->
+                    <div class="mb-3">
+                        <label for="inputRoll" class="form-label">Rol de la empresa</label>
+                        <input type="text" class="form-control" id="inputRoll" name="rol" #rol='ngModel' [(ngModel)]="empresaIDModel.rol">
+                    </div>
+                    <!-- USERNAME -->
+                    <div class="mb-3">
+                        <label for="inputUsernamee" class="form-label">Username de la empresa</label>
+                        <input type="text" class="form-control" id="inputUsernamee" name="username" #username='ngModel' [(ngModel)]="empresaIDModel.username">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="modificarEmpresa()">Guardar cambios</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ELIMINAR -->
+<div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar empresa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <!-- ID DE LA EMPRESA -->
+                    <div class="mb-3">
+                        <label for="inputIddd" class="form-label">ID de la empresa</label>
+                        <input type="text" class="form-control" id="inputIddd" name="_id" #_id='ngModel' [(ngModel)]="empresaIDModel._id" disabled>
+                    </div>
+                    <!-- ROL -->
+                    <div class="mb-3">
+                        <label for="inputRolll" class="form-label">Rol de la empresa</label>
+                        <input type="text" class="form-control" id="inputRolll" name="rol" #rol='ngModel' [(ngModel)]="empresaIDModel.rol" disabled>
+                    </div>
+                    <!-- USERNAME -->
+                    <div class="mb-3">
+                        <label for="inputUsernameee" class="form-label">Username de la empresa</label>
+                        <input type="text" class="form-control" id="inputUsernameee" name="username" #username='ngModel' [(ngModel)]="empresaIDModel.username" disabled>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#emergente">Eliminar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- EMERGENTE -->
+<div class="modal fade" id="emergente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmación de eliminación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Está seguro de eliminar la empresa con nombre de usuario "<strong>{{ empresaIDModel.username }}</strong>"?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)='eliminarEmpresa()'>Eliminar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

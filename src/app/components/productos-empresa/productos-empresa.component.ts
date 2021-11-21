@@ -3,12 +3,14 @@ import { EmpresaService } from 'src/app/services/empresa.service';
 import { ProductoEmpresaService } from '../../services/producto-empresa.service';
 import { ProductoEmpresa } from '../../models/productoEmpresa.model';
 import Swal from 'sweetalert2';
+import { ProductoSucursalService } from 'src/app/services/producto-sucursal.service';
+import { ProductoSucursal } from '../../models/productoSucursal.model';
 
 @Component({
   selector: 'app-productos-empresa',
   templateUrl: './productos-empresa.component.html',
   styleUrls: ['./productos-empresa.component.scss'],
-  providers: [ProductoEmpresaService, EmpresaService]
+  providers: [ProductoEmpresaService, EmpresaService, ProductoSucursalService]
 })
 export class ProductosEmpresaComponent implements OnInit {
   public token: String;
@@ -16,10 +18,14 @@ export class ProductosEmpresaComponent implements OnInit {
   public productosEmpresaModel: ProductoEmpresa;
   public productosEmpresaIDModel: ProductoEmpresa;
 
-  constructor(private productoEmpresaService: ProductoEmpresaService, private empresaService: EmpresaService) {
+  public productoSucursalModel: ProductoSucursal;
+
+  constructor(private productoEmpresaService: ProductoEmpresaService, private empresaService: EmpresaService, private productoSucursalService: ProductoSucursalService) {
     this.token = this.empresaService.getToken();
     this.productosEmpresaModel = new ProductoEmpresa('', '', '', 0);
     this.productosEmpresaIDModel = new ProductoEmpresa('', '', '', 0);
+
+    this.productoSucursalModel = new ProductoSucursal('', '', 0, 0, '');
   }
 
   ngOnInit(): void {
@@ -115,6 +121,31 @@ export class ProductosEmpresaComponent implements OnInit {
           position: 'center',
           icon: 'success',
           title: '¡Producto eliminado con éxito!',
+          showConfirmButton: false,
+          timer: 3000
+        });
+      },
+      error => {
+        console.log(<any>error);
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.message
+        });
+      }
+    );
+  }
+
+  crearProductoSucursal() {
+    this.productoSucursalService.crearProductoSucursal(this.productoSucursalModel, this.token).subscribe(
+      response => {
+        console.log(response);
+
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: '¡Producto creado en la sucursal con éxito!',
           showConfirmButton: false,
           timer: 3000
         });

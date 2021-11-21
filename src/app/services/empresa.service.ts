@@ -41,16 +41,22 @@ export class EmpresaService {
     return this.http.get(`${ this.ruta }obtenerEmpresas`, { headers: headersToken });
   }
 
+  obtenerEmpresa(): Observable<any> {
+    let headersToken = this.headersVariable.set('token', this.getToken());
+
+    return this.http.get(`${ this.ruta }obtenerEmpresa`, { headers: headersToken });
+  }
+
   modificarEmpresa(empresa: Empresa): Observable<any> {
     let body = JSON.stringify(empresa);
     let headersToken = this.headersVariable.set('token', this.getToken());
 
-    return this.http.put(`${ this.ruta }modificarEmpresa/${ empresa._id }`, body, { headers: headersToken });
+    return this.http.put(`${ this.ruta }modificarEmpresa`, body, { headers: headersToken });
   }
 
-  eliminarEmpresa(id: String): Observable<any> {
+  eliminarEmpresa(): Observable<any> {
     let headersToken = this.headersVariable.set('token', this.getToken());
 
-    return this.http.delete(`${ this.ruta }eliminarEmpresa/${ id }`, { headers: headersToken });
+    return this.http.delete(`${ this.ruta }eliminarEmpresa`, { headers: headersToken });
   }
 }
